@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-win.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-这是一个轻量级的 Windows 系统工具，旨在帮助用户**一键暂停**或**恢复** Windows 自动更新。
+这是一个轻量级的 Windows 系统工具，旨在帮助用户一键**暂停**或**恢复** Windows 自动更新。
 
 将暂停更新的时间延长至 **`9999年12月31日`**（意义上的永久暂停）
 
