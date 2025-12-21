@@ -1,5 +1,4 @@
 # WU-Blocker
-一个用于暂停windosws自动更新的工具
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Platform](https://img.shields.io/badge/Platform-Windows-win.svg)
