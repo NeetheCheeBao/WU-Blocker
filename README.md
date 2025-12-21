@@ -27,13 +27,13 @@
 **恢复更新时：**
 删除上述键值，让 Windows 恢复默认策略。
 
-## 🚀 如何使用
+## ⬇️ 下载使用
 
-### 直接下载可执行文件 (推荐)
-前往 [Releases](https://github.com/NeetheCheeBao/WindowsUpdateTool/releases) 页面下载最新的 `WindowsUpdateTool.exe`。
+前往 [Releases](https://github.com/NeetheCheeBao/WU-Blocker/releases) 页面下载。
+
 1. 右键以**管理员身份运行**（程序会自动请求提权）。
 2. 点击“永久暂停更新”即可。
 
 ## 📄 许可证
 
-本项目基于 MIT License 开源。
+本项目基于 [MIT License](License) 开源。
