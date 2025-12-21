@@ -1,0 +1,2 @@
+# WindowsUpdateTool
+一个用于暂停windosws自动更新的工具
