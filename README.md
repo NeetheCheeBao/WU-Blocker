@@ -1,8 +1,8 @@
 # WU-Blocker
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows-win.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+[![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](#)
+[![Platform](https://img.shields.io/badge/Platform-Windows-win.svg)](#)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 这是一个轻量级的 Windows 系统工具，旨在帮助用户一键**暂停**或**恢复** Windows 自动更新。
 
