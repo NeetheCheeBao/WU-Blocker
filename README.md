@@ -9,7 +9,7 @@
 将暂停更新的时间延长至 **`9999年12月31日`**（意义上的永久暂停）
 
 ## 📸 截图
-<a href="#"><img alt="image" src="/IMG/1.png" /></a>
+<a href="#"><img alt="image" src="/IMG/0.png" /></a>
 
 ## ✅ 优势
 对于传统的工具来说，我们只针对**Windows自动更新**，不影响`Windows Update`服务，对于需要使用微软商店的用户十分友好。
