@@ -1,4 +1,4 @@
-# WU-Blocker
+# Windows Update Blocker
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Windows-win.svg)](#)
