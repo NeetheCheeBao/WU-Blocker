@@ -27,6 +27,12 @@
 **恢复更新时：**
 删除上述键值，让 Windows 恢复默认策略。
 
+## 🛠️ 本地编译
+
+```bash
+.\build.bat
+```
+
 ## ⬇️ 下载使用
 
 前往 [Releases](https://github.com/NeetheCheeBao/WU-Blocker/releases) 页面下载。
