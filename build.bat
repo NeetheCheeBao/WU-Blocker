@@ -27,6 +27,14 @@ if not exist main.py (
   exit /b 1
 )
 
+if not exist icon.ico (
+  echo ERROR: icon.ico not found in current directory.
+  echo Place icon.ico next to main.py before building.
+  echo.
+  pause
+  exit /b 1
+)
+
 set "NAME=WU-Blocker"
 set "EXE_OUT=dist\%NAME%.exe"
 set "BAR_WIDTH=30"
@@ -46,7 +54,7 @@ python -c "import PyInstaller" >nul 2>&1
 if errorlevel 1 goto :fail
 
 call :progress "Compiling main.py to executable..."
-pyinstaller -F -w -n %NAME% main.py >nul 2>&1
+pyinstaller -F -w -n %NAME% --icon=icon.ico --add-data "icon.ico;." main.py >nul 2>&1
 if errorlevel 1 goto :fail
 
 call :progress "Cleaning temporary build files..."
