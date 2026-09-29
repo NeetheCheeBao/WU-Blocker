@@ -321,7 +321,7 @@ def check_update_status():
 # 操作相关函数
 def print_system_info():
     """输出软件名称、系统信息和权限，然后显示更新状态"""
-    term_write("Windows Update Blocker v1.0.1", "cmd")
+    term_write("Windows Update Blocker v1.0.2", "cmd")
     term_write(get_os_info(), "info")
     term_write(f"程序权限：{get_privilege_text()}", "info")
     check_update_status()
@@ -470,7 +470,7 @@ if __name__ == "__main__":
         sys.exit()
 
     root = tk.Tk()
-    root.title("WU-Blocker v1.0.1")
+    root.title("WU-Blocker v1.0.2")
 
     # 设置窗口图标，兼容 PyInstaller 打包
     icon_path = resource_path("icon.ico")
