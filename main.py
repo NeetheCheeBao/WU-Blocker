@@ -312,8 +312,6 @@ def check_update_status():
         term_write(f"暂停开始时间 : {start_str}", "ok")
         term_write(f"暂停到期时间 : {expiry_str}", "ok")
         term_write(f"剩余时间     : 约 {days:,} 天", "ok")
-        if expiry.year >= 9999:
-            term_write("(到期时间为 9999 年，等同于永久暂停)", "dim")
     else:
         term_write("当前状态: 自动更新正常运行。", "warn")
 
