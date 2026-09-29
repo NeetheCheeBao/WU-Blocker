@@ -2,6 +2,7 @@ import os
 import sys
 import ctypes
 import datetime
+import subprocess
 import tkinter as tk
 from tkinter import ttk
 import winreg
@@ -409,7 +410,50 @@ def restore_updates():
 
 
 def open_github():
+    """检查更新：跳转到项目主页"""
     webbrowser.open("https://github.com/NeetheCheeBao/WU-Blocker")
+
+
+def _last_key_prefix():
+    """根据系统 UI 语言返回注册表编辑器中「我的电脑」的显示名称"""
+    try:
+        lang = ctypes.windll.kernel32.GetUserDefaultUILanguage()
+        if (lang & 0x3FF) == 0x04:      # 中文（简体 / 繁体）
+            return "计算机"
+    except Exception:
+        pass
+    return "Computer"
+
+
+def open_regedit():
+    """打开注册表编辑器，并定位到 Windows Update 设置项"""
+    term_write("> 打开注册表编辑器并定位到:", "cmd")
+    term_write(r"  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "dim")
+
+    last_key = (
+        _last_key_prefix()
+        + r"\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"
+    )
+
+    # 先写入 LastKey，regedit 启动时会自动跳转到该位置
+    try:
+        key = winreg.CreateKeyEx(
+            winreg.HKEY_CURRENT_USER,
+            r"Software\Microsoft\Windows\CurrentVersion\Applets\Regedit",
+            0,
+            winreg.KEY_WRITE,
+        )
+        winreg.SetValueEx(key, "LastKey", 0, winreg.REG_SZ, last_key)
+        winreg.CloseKey(key)
+    except Exception as e:
+        term_write(f"[提示] 无法预设注册表定位信息: {e}", "warn")
+
+    try:
+        # /m 可让已打开的 regedit 另开一个窗口，避免只激活旧窗口
+        subprocess.Popen(["regedit.exe", "/m"])
+        term_write("[√] 已启动注册表编辑器。", "ok")
+    except Exception as e:
+        term_write(f"[错误] 无法启动注册表编辑器: {e}", "err")
 
 
 def show_startup_info():
@@ -589,8 +633,38 @@ if __name__ == "__main__":
     btn_exit = ttk.Button(btn_frame, text="退出", width=6, command=root.destroy)
     btn_exit.pack(side=tk.LEFT, padx=(sc(4), sc(4)))
 
-    btn_info = ttk.Button(btn_frame, text="(i)", width=4, command=open_github)
-    btn_info.pack(side=tk.LEFT, padx=(sc(4), 0))
+    # ---- 汉堡菜单 ----
+    def show_menu():
+        """在按钮正下方弹出悬浮菜单"""
+        x = btn_menu.winfo_rootx() + btn_menu.winfo_width() - app_menu.winfo_reqwidth()
+        y = btn_menu.winfo_rooty() + btn_menu.winfo_height()
+        try:
+            app_menu.tk_popup(x, y)
+        finally:
+            app_menu.grab_release()
+
+    # 用固定尺寸的容器把菜单按钮撑成正方形
+    menu_size = sc(28)
+    menu_box = ttk.Frame(btn_frame, width=menu_size, height=menu_size)
+    menu_box.pack(side=tk.LEFT, padx=(sc(4), 0))
+    menu_box.pack_propagate(False)   # 禁止子控件改变容器尺寸
+
+    btn_menu = ttk.Button(menu_box, text="≡", width=1, command=show_menu)
+    btn_menu.place(x=0, y=0, relwidth=1, relheight=1)
+
+    app_menu = tk.Menu(
+        root,
+        tearoff=0,
+        font=base_font,
+        bg="#FFFFFF",
+        fg="black",
+        activebackground="#E0EEF9",
+        activeforeground="black",
+        borderwidth=1,
+        relief="solid",
+    )
+    app_menu.add_command(label="打开注册表", command=open_regedit)
+    app_menu.add_command(label="检查更新", command=open_github)
 
     # 启动后自动输出程序信息及状态
     root.after(120, show_startup_info)
