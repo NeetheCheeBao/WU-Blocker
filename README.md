@@ -6,7 +6,7 @@
 [![Rust](https://img.shields.io/badge/Rust-1.71%2B-orange.svg?logo=rust&logoColor=white)](#)
 [![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg?logo=windows&logoColor=white)](#)
 [![GUI](https://img.shields.io/badge/GUI-Win32%20API-lightgrey.svg)](#)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 一键 **暂停** 或 **恢复** Windows 自动更新。
 
@@ -109,4 +109,4 @@ WU-Blocker
 
 ## ⚖️ 许可证
 
-本项目采用 MIT 许可证 - 详情请参阅 [LICENSE](LICENSE) 文件。
+本项目采用 GNU General Public License v3.0 许可证 - 详情请参阅 [LICENSE](LICENSE) 文件。
